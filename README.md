@@ -11,8 +11,31 @@ To write a C Program to find area of rectangle using pointer.
 
 ## PROGRAM
 
+``` c
+#include <stdio.h>
+
+int main() {
+    float length, width;
+
+    float *ptrLength = &length, *ptrWidth = &width;
+
+    printf("Enter the length of the rectangle: ");
+    scanf("%f", ptrLength); 
+    printf("Enter the width of the rectangle: ");
+    scanf("%f", ptrWidth); 
+
+    float area = (*ptrLength) * (*ptrWidth);
+
+    printf("The area of the rectangle is: %.2f\n", area);
+
+    return 0;
+}
+
+```
+
 ## OUTPUT
 		       	
+![img1](https://github.com/user-attachments/assets/39c11ba3-eaea-4504-b71a-4ac3bc82bfe3)
 
 
 ## RESULT
@@ -35,8 +58,32 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 
 ## PROGRAM
 
+``` c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char *str = (char *)malloc(8 * sizeof(char));
+
+    if (str == NULL) { 
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    sprintf(str, "WELCOME"); 
+
+    printf("The string is: %s\n", str);
+
+    free(str);
+
+    return 0; 
+}
+
+```
+
 ## OUTPUT
 
+![img2](https://github.com/user-attachments/assets/064d7dec-fab3-473e-b3e5-a2f45b44302c)
 
 
 ## RESULT
@@ -61,8 +108,38 @@ To write a C Program to store the student information and display it using struc
 
 ## PROGRAM
 
+``` c
+#include <stdio.h>
+
+struct Student {
+    char name[50];
+    int roll_number;
+    float marks;
+};
+
+int main() {
+    struct Student s;
+
+    printf("Enter student's name: ");
+    scanf("%s", s.name);
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll_number);
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", s.name);
+    printf("Roll Number: %d\n", s.roll_number);
+    printf("Marks: %.2f\n", s.marks);
+
+    return 0;
+}
+
+```
 
 ## OUTPUT
+
+![img3](https://github.com/user-attachments/assets/b4fea923-c099-425c-be96-af77db967549)
 
 
 ## RESULT
@@ -88,10 +165,46 @@ To write a C Program to read and store the data of 3 employees and calculate the
 
 ## PROGRAM
 
+``` c
+#include <stdio.h>
+
+struct Employee {
+    char name[50];
+    int id;
+    float basic_salary, hra, da, gross_salary;
+};
+
+int main() {
+    struct Employee employees[3];
+
+    for (int i = 0; i < 3; i++) {
+        printf("Enter details for Employee %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", employees[i].name);
+        printf("ID: ");
+        scanf("%d", &employees[i].id);
+        printf("Basic Salary: ");
+        scanf("%f", &employees[i].basic_salary);
+        employees[i].hra = 0.2f * employees[i].basic_salary;
+        employees[i].da = 0.8f * employees[i].basic_salary;
+        employees[i].gross_salary = employees[i].basic_salary + employees[i].hra + employees[i].da;
+    }
+
+    printf("\nEmployee Details:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Name: %s, ID: %d, Basic Salary: %.2f, Gross Salary: %.2f\n",
+               employees[i].name, employees[i].id, employees[i].basic_salary, employees[i].gross_salary);
+    }
+
+    return 0;
+}
+
+```
 
  ## OUTPUT
 
- 
+ ![img4](https://github.com/user-attachments/assets/e91f3a59-6100-4e7c-a46a-140cce059839)
+
 
 ## RESULT
 
@@ -135,10 +248,48 @@ Step 8: End the program.
 
 ## PROGRAM
 
+``` c
+#include <stdio.h>
+
+struct student {
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+};
+
+int main() {
+    struct student s[2];
+    int i, j;
+
+    for (i = 0; i < 2; i++) {
+        printf("Enter 5 subject marks for Student %d:\n", i + 1);
+        for (j = 0; j < 5; j++) {
+            scanf("%d", &s[i].subject[j]);
+        }
+    }
+
+    for (i = 0; i < 2; i++) {
+        s[i].total = 0;
+        for (j = 0; j < 5; j++) {
+            s[i].total += s[i].subject[j];
+        }
+    }
+
+    for (i = 0; i < 2; i++) {
+        printf("Total marks for Student %d: %d\n", i + 1, s[i].total);
+        printf("Average marks for Student %d: %.2f\n", i + 1, s[i].total / 5.0);
+    }
+
+    return 0;
+}
+
+```
 
 ## OUTPUT
 
- 
+ ![img5](https://github.com/user-attachments/assets/873492c7-3b8c-4c7b-bc5c-845294fe32d6)
+
 
 ## RESULT
 
